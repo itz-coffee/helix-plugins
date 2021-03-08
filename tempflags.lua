@@ -90,8 +90,8 @@ ix.command.Add("PlyGiveTempFlag", {
         ix.util.Notify(string.format(
             "%s has given '%s' flags to %s until: %s",
             client:Name(),
-            target:Name(),
             flags,
+            target:Name(),
             date
         ))
     end
