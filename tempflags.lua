@@ -73,7 +73,7 @@ ix.command.Add("PlyGiveTempFlag", {
             return "The 'Player Flags' plugin is not installed or disabled!"
         end
 
-        local length = length:match("(%d+%a)")
+        local length = length:match("(%d+[smhdwny])")
 
         if not length then
             return "Invalid length!"
