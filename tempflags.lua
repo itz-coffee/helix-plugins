@@ -1,6 +1,6 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "Temporary Flags"
-PLUGIN.author = "gm1003 ツ"
+PLUGIN.author = "wildflowericecoffee"
 PLUGIN.description = "Gives a player flags that expire after time. Requires the 'Player Flags' plugin."
 
 local plyFlagsPlugin = ix.plugin.Get("sh_playerflags")
