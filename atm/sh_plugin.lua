@@ -8,5 +8,6 @@ ix.char.RegisterVar("BankMoney", {
     field = "bank_money",
     fieldType = ix.type.number,
     default = 0,
+    isLocal = true,
     bNoDisplay = true
 })
