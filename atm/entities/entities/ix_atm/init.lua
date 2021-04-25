@@ -1,16 +1,10 @@
-util.AddNetworkString("ixATMDeposit")
-util.AddNetworkString("ixATMWithdraw")
-util.AddNetworkString("ixATMMenu")
+util.AddNetworkString("ixAtmDeposit")
+util.AddNetworkString("ixAtmWithdraw")
 
 include("shared.lua")
 AddCSLuaFile("cl_init.lua")
 
-function ENT:Use(client)
-    net.Start("ixATMMenu")
-    net.Send(client)
-end
-
-net.Receive("ixATMDeposit", function(_, client)
+net.Receive("ixAtmDeposit", function(_, client)
     local requested = net.ReadUInt(32)
     local character = client:GetCharacter()
 
@@ -26,7 +20,7 @@ net.Receive("ixATMDeposit", function(_, client)
     client:Notify("You have deposited " .. ix.currency.Get(requested) .. "!")
 end)
 
-net.Receive("ixATMWithdraw", function(_, client)
+net.Receive("ixAtmWithdraw", function(_, client)
     local requested = net.ReadUInt(32)
     local character = client:GetCharacter()
 

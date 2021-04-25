@@ -4,6 +4,8 @@ PLUGIN.name = "ATM"
 PLUGIN.author = "wildflowericecoffee"
 PLUGIN.description = "Spawns an ATM entity to handle money."
 
+ix.util.IncludeDir("libs")
+
 ix.char.RegisterVar("BankMoney", {
     field = "bank_money",
     fieldType = ix.type.number,
