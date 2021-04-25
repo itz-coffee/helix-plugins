@@ -35,7 +35,6 @@ function PANEL:DrawIdle()
         local logo = self:Add("DImage")
         logo:SetMaterial(mat)
         logo:SetSize(mat:Width() / 2, mat:Height() / 2)
-        logo:SetImageColor(self.color)
         logo:Center()
     else
         local logo = self:Add("DLabel")
