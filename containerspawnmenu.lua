@@ -13,7 +13,7 @@ if SERVER then
 
         local entity = ents.Create("prop_physics")
         entity:SetModel(model)
-        entity:SetPos(client:GetItemDropPos())
+        entity:SetPos(client:GetItemDropPos(entity))
 
         hook.Run("PlayerSpawnedProp", client, model, entity)
     end)
