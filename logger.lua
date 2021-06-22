@@ -1,6 +1,11 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "SQL Logging"
 PLUGIN.author = "wildflowericecoffee"
+PLUGIN.readme = [[
+This plugin is incompatible with repositories older than May 11th, 2021.
+Please update your helix framework by pulling from the master branch.
+https://github.com/NebulousCloud/helix/tree/master
+]]
 
 if CLIENT then return end
 
