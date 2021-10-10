@@ -24,6 +24,14 @@ if SERVER then
             return false, "#GameUI_ConnectionFailed"
         end
     end
+
+    function PLUGIN:PlayerAuthed(client, steamID, uniqueID)
+        local steamID64 = util.SteamIDTo64(steamID)
+
+        if ix.config.Get("whitelistEnabled") and not self.allowed[steamID64] then
+            game.KickID(uniqueID, "Sorry, you are not whitelisted for this server")
+        end
+    end
 end
 
 ix.command.Add("WhitelistAdd", {
