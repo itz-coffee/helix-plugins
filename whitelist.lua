@@ -21,7 +21,7 @@ if SERVER then
 
     function PLUGIN:CheckPassword(steamID64)
         if ix.config.Get("whitelistEnabled") and not self.allowed[steamID64] then
-            return false, "#GameUI_ConnectionFailed"
+            return false, "Sorry, you are not whitelisted for this server"
         end
     end
 
