@@ -29,7 +29,7 @@ if SERVER then
         local steamID64 = util.SteamIDTo64(steamID)
 
         if ix.config.Get("whitelistEnabled") and not self.allowed[steamID64] then
-            game.KickID(uniqueID, "Sorry, you are not whitelisted for this server" .. GetHostName())
+            game.KickID(uniqueID, "Sorry, you are not whitelisted for " .. GetHostName())
         end
     end
 end
