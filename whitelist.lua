@@ -38,8 +38,12 @@ ix.command.Add("WhitelistAdd", {
     description = "Adds a SteamID to the whitelist",
     privilege = "Manage Server Whitelist",
     superAdminOnly = true,
-    arguments = ix.type.steamid,
+    arguments = ix.type.string,
     OnRun = function(self, client, steamID)
+        if not steamID:match("STEAM_(%d+):(%d+):(%d+)") then
+            return "Invalid SteamID!"
+        end
+
         local steamID64 = util.SteamIDTo64(steamID)
 
         if PLUGIN.allowed[steamID64] then
@@ -56,8 +60,12 @@ ix.command.Add("WhitelistRemove", {
     description = "Removes a SteamID from the whitelist",
     privilege = "Manage Server Whitelist",
     superAdminOnly = true,
-    arguments = ix.type.steamid,
+    arguments = ix.type.string,
     OnRun = function(self, client, steamID)
+        if not steamID:match("STEAM_(%d+):(%d+):(%d+)") then
+            return "Invalid SteamID!"
+        end
+
         local steamID64 = util.SteamIDTo64(steamID)
 
         if not PLUGIN.allowed[steamID64] then
