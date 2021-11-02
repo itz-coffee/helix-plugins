@@ -4,8 +4,6 @@ PLUGIN.name = "Whitelist"
 PLUGIN.author = "wildflowericecoffee"
 PLUGIN.description = "Adds a server whitelist"
 
-PLUGIN.allowed = PLUGIN.allowed or {}
-
 ix.config.Add("whitelistEnabled", false, "Enables the server whitelist.", nil, {
     category = "Whitelist"
 })
@@ -20,15 +18,15 @@ if SERVER then
     end
 
     function PLUGIN:CheckPassword(steamID64)
-        if ix.config.Get("whitelistEnabled") and not self.allowed[steamID64] then
+        local steamID = util.SteamIDFrom64(steamID64)
+
+        if ix.config.Get("whitelistEnabled") and not self.allowed[steamID] then
             return false, "Sorry, you are not whitelisted for " .. GetHostName()
         end
     end
 
     function PLUGIN:PlayerAuthed(client, steamID, uniqueID)
-        local steamID64 = util.SteamIDTo64(steamID)
-
-        if ix.config.Get("whitelistEnabled") and not self.allowed[steamID64] then
+        if ix.config.Get("whitelistEnabled") and not self.allowed[steamID] then
             game.KickID(uniqueID, "Sorry, you are not whitelisted for " .. GetHostName())
         end
     end
@@ -44,12 +42,10 @@ ix.command.Add("WhitelistAdd", {
             return "Invalid SteamID!"
         end
 
-        local steamID64 = util.SteamIDTo64(steamID)
-
-        if PLUGIN.allowed[steamID64] then
+        if PLUGIN.allowed[steamID] then
             return "This SteamID is already whitelisted"
         else
-            PLUGIN.allowed[steamID64] = true
+            PLUGIN.allowed[steamID] = true
 
             return "Added SteamID to the whitelist"
         end
@@ -66,12 +62,10 @@ ix.command.Add("WhitelistRemove", {
             return "Invalid SteamID!"
         end
 
-        local steamID64 = util.SteamIDTo64(steamID)
-
-        if not PLUGIN.allowed[steamID64] then
+        if not PLUGIN.allowed[steamID] then
             return "This SteamID is not whitelisted"
         else
-            PLUGIN.allowed[steamID64] = nil
+            PLUGIN.allowed[steamID] = nil
 
             return "Removed SteamID from the whitelist"
         end
@@ -83,7 +77,7 @@ ix.command.Add("WhitelistClear", {
     privilege = "Manage Server Whitelist",
     superAdminOnly = true,
     OnRun = function(self)
-        table.Empty(PLUGIN.allowed)
+        PLUGIN.allowed = {}
 
         return "Cleared the whitelist"
     end
@@ -96,7 +90,7 @@ ix.command.Add("WhitelistAddAll", {
     OnRun = function(self)
         for _, client in ipairs(player.GetHumans()) do
             if IsValid(client) then
-                PLUGIN.allowed[client:SteamID64()] = true
+                PLUGIN.allowed[client:SteamID()] = true
             end
         end
 
