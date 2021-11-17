@@ -1,7 +1,21 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "Temporary Flags"
 PLUGIN.author = "wildflowericecoffee"
-PLUGIN.description = "Gives a player flags that expire after time. Requires the 'Player Flags' plugin."
+PLUGIN.description = "Gives a player flags that expire after time."
+
+PLUGIN.readme = [[
+This plugin allows server staff to temporarily give flags to a player that automatically expire over time.
+To use this, you need the 'Player Flags' plugin installed and enabled, which can be found here: https://plugins.gethelix.co/player-flags/.
+]]
+PLUGIN.license = [[
+Copyright 2021 wildflowericecoffee
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+]]
 
 local plyFlagsPlugin = ix.plugin.Get("sh_playerflags")
 
