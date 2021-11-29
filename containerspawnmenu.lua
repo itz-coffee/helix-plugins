@@ -1,7 +1,6 @@
 PLUGIN.name = "Container Spawn Menu"
 PLUGIN.description = "Adds a spawn menu to spawn containers."
 PLUGIN.author = "wildflowericecoffee"
-
 PLUGIN.readme = [[
 This plugin adds a spawn menu for all the helix containers.
 To open it, type `/ContainerSpawnMenu` ingame.
